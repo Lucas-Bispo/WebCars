@@ -1,0 +1,26 @@
+<div id="tabela-carro" class="row">
+  <table  class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nome do Carro</th>
+          <th scope="col">Fabricante</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Preço</th>
+          <th scope="col">Imagem</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let carro of listaCarros' >
+          <th (click)="SelecionarCarro(carro)" scope="row">{{carro.codigoCarro}}</th>
+          <td (click)="SelecionarCarro(carro)">{{carro.nomeCarro}}</td>
+          <td (click)="SelecionarCarro(carro)">{{carro.nomeFabricante}}</td>
+          <td (click)="SelecionarCarro(carro)">{{carro.anoFabricacao}}</td>
+          <td (click)="SelecionarCarro(carro)">{{carro.preco}}</td>
+          <td (click)="SelecionarCarro(carro)"><img src="{{carro.imagem}}" class="img-fluid img-carro" alt="Responsive image"></td>
+          <td><i (click)="DeletarCarro(carro)" class="fa fa-trash" aria-hidden="true"></i></td>
+        </tr>
+      </tbody>
+    </table>    
+</div>

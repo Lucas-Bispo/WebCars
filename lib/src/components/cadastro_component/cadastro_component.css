@@ -1,0 +1,7 @@
+#cadastro-carro{
+    margin: 40px;
+}
+
+#alert-sucesso, #alert-erro, .btn-success {
+    display: none;
+}

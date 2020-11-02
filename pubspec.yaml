@@ -1,0 +1,22 @@
+name: carros
+description: A web app that uses AngularDart Components
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: '>=2.7.0 <3.0.0'
+
+dependencies:
+  angular: any
+  angular_components: any
+  angular_router: any
+  http: any
+
+dev_dependencies:
+  angular_test: any
+  build_runner: any
+  build_test: any
+  build_web_compilers: any
+  pedantic: any
+  test: any
+  

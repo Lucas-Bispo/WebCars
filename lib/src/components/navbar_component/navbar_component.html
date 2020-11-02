@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand">WebCars</a>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="termoPesquisa"
+    #termoPesquisa
+    (keyup)="PesquisarCarro(termoPesquisa.value)"
+    (change)="PesquisarCarro(termoPesquisa.value)"
+    >
+    <i id="icone-exit" class="fa fa-sign-out text-light" aria-hidden="true" (click)="Login()"></i>
+  </form>
+</nav>

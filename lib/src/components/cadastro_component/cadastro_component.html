@@ -1,0 +1,66 @@
+<div id="cadastro-carro">
+  <form #formCadastro="ngForm">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nomeCarro">Nome do Carro</label>
+          <input type="text" class="form-control" id="nomeCarro" 
+            required
+            [(ngModel)]="carroCadastro.nomeCarro"
+            #nomeCarro="ngForm"
+            [class.is-valid]="nomeCarro.valid"
+          >
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nomeFabricante">Fabricante</label>
+          <input type="text" class="form-control" id="nomeFabricante"
+            required
+            [(ngModel)]="carroCadastro.nomeFabricante"
+            #nomeFabricante="ngForm"
+            [class.is-valid]="nomeFabricante.valid"            
+          >
+        </div>
+      </div>
+      <div class="form-row">
+          <div class="form-group col-md-3">
+            <label for="anoFabricacao">Ano de Fabricação</label>
+            <input type="text" class="form-control" id="anoFabricacao"
+            required
+            [(ngModel)]="carroCadastro.anoFabricacao"
+            #anoFabricacao="ngForm" 
+            [class.is-valid]="anoFabricacao.valid"              
+            >
+          </div>
+          <div class="form-group col-md-3">
+            <label for="preco">Preço</label>
+            <input type="text" class="form-control" id="preco"
+            required
+            [(ngModel)]="carroCadastro.preco"
+            #preco="ngForm"  
+            [class.is-valid]="preco.valid"  
+            >
+          </div>
+          <div class="form-group col-md-6">
+              <label for="imagem">Imagem</label>
+              <input type="text" class="form-control" id="imagem"
+              required
+              [(ngModel)]="carroCadastro.imagem"
+              #imagem="ngForm"  
+              [class.is-valid]="imagem.valid"                
+              >
+            </div>            
+        </div>       
+
+      <button id="btn-cadastrar" type="submit" class="btn btn-dark" (click)='CadastrarCarro()'>Cadastrar</button>
+      <button id="btn-alterar" type="submit" class="btn btn-success" (click)='AlterarCarro()'>Alterar</button>
+      <button type="reset" class="btn btn-danger" (click)='LimparCampos()'>Limpar</button>
+
+      <div id="alert-sucesso" class="alert alert-success mt-3 col-4" role="alert">
+        
+      </div>
+
+      <div id="alert-erro" class="alert alert-danger mt-3 col-4" role="alert">
+        
+      </div>
+
+    </form>
+</div>
