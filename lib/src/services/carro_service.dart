@@ -29,11 +29,24 @@ class CarroService{
       .debounce(Duration(microseconds: 300))
       .distinct();
     streamListaCarro = streamControllerListaCarro.stream;
-    streamPesquisa.listen((termo) { 
-      var termoRegExp = RegExp(termo, caseSensitive: false);
-      var listaCarroPesquisa = listaCarros.where((carro) => carro.nomeCarro.contains(termoRegExp)).toList();
+    streamPesquisa.listen((termo) async{ 
+      
+
+      var listaCarroPesquisa = await pesquisaCarros(termo);
       streamControllerListaCarro.add(listaCarroPesquisa);
     });
+  }
+
+  Future<List<Carro>> pesquisaCarros(termo) async {
+    try {
+      final pesquisaCarrosUrl = '${_carrosUrl}/?nomeCarro={termo}';
+      final response = await _http.get(pesquisaCarrosUrl);
+      final carros = _extractData(response);
+          
+      return carros;
+    } catch (e) {
+      throw _handleError(e);
+    }
   }
 
   List<Carro> listaCarros = [
@@ -55,16 +68,21 @@ class CarroService{
   Future<List<Carro>> GetListaCarros2()async{
     try {
       final response = await _http.get(_carrosUrl);
-      final carros = (_extractData(response) as List)
-          .map((carro) => Carro.fromMap(carro))
-          .toList();
+      final carros = _extractData(response);
+          
       return carros;
+
+
     } catch (e) {
       throw _handleError(e);
     }   
   }
 
-  dynamic _extractData(Response resp) => json.decode(resp.body)['data'];
+  dynamic _extractData(Response resp) => 
+  (json.decode(resp.body)['data'] as List)
+  .map((carro) => Carro.fromMap(carro))
+  .toList();
+
 
   Exception _handleError(dynamic e) {
     print(e); // for demo purposes only
