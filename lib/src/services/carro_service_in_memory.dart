@@ -31,9 +31,15 @@ static final _initialCarros = [
           data = _carroDb.where((carro) => carro.nomeCarro.contains(regExp)).toList();
         }        
         break;
+        
       case 'POST':
-        data = null;
+        var carroMap =json.decode(request.body)['carro'];
+        var novoCarro = Carro.fromMap(carroMap);
+        novoCarro.codigoCarro = _nextCodigo++;
+        _carroDb.add(novoCarro);
+        data = _carroDb;
         break;
+
       case 'PUT':
         data = null;
         break;

@@ -23,6 +23,8 @@ class CarroService{
 
   final Client _http;  
 
+  static final _headers ={'Content-Type': 'application/jason'};
+
   CarroService(this._http){
     streamCarro = streamControllerCarro.stream;
     streamPesquisa = streamControllerPesquisa.stream
@@ -110,6 +112,22 @@ class CarroService{
       return {'codigo':'-1', 'mensagem':'Erro ao tentar cadastrar o carro:' + e};
     }    
   }
+
+  Future<Map<String,String>> CadastrarCarro2(Carro carro) async{
+    
+    try{
+     final response = await _http.post(_carrosUrl,
+      headers: _headers, body: json.encode({'carro': carro}));
+      final listaCarrosAtualizada = _extractData(response);
+      streamControllerListaCarro.add(listaCarrosAtualizada);
+      return {'codigo':'0', 'mensagem':'Carro cadastrado com sucesso!'};
+    }catch(e){
+      return {'codigo':'-1', 'mensagem':'Erro ao tentar cadastrar o carro:' + e};
+    }    
+  }
+
+
+
 
   void DeletarCarro(Carro carro){
     listaCarros.remove(carro);
