@@ -50,6 +50,17 @@ class CarroService{
     }
   }
 
+  void SelecionarCarro(Carro carro) async {
+    final selecionaCarrosUrl = '${_carrosUrl}/${carro.codigoCarro}';
+    final response = await _http.get(selecionaCarrosUrl);
+    final carroMap = json.decode(response.body)['data'];
+    final carrosSelecionado =Carro.fromMap(carroMap);
+    
+    streamControllerCarro.add(carro);
+  }
+
+
+
   List<Carro> listaCarros = [
     Carro(3, 'Gol GTI', 'Volksvagem', '1994', 15000.20,'https://quatrorodas.abril.com.br/wp-content/uploads/2018/11/gol-gti-modelo-1989-da-volkswagen-de-propriedade-do-publicitc3a1rio-rafael-carmin_1.jpg?quality=70&strip=info'),
     Carro(2, 'Scort XR3', 'Ford', '1995', 16500.20,'https://quatrorodas.abril.com.br/wp-content/uploads/2019/06/qr-721-classicos-xr3-01.tif_-e1559850002131.jpg?quality=70&strip=info'),

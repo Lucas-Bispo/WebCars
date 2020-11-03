@@ -37,7 +37,7 @@ class TabelaComponent extends OnInit{
   }  
 
   void SelecionarCarro(Carro carro){
-    _carroServico.streamControllerCarro.add(carro);
+    _carroServico.SelecionarCarro(carro);
   }
 
 }
