@@ -143,6 +143,20 @@ class CarroService{
       return {'codigo':'-1', 'mensagem':'Erro ao tentar alterar o carro:'};
     }      
   }
+  Future<Map<String,String>> AlterarCarro2(Carro carroAlteracao) async{
+    try{
+      final url = '${_carrosUrl}/${carroAlteracao.codigoCarro}';
+      
+      final response = 
+        await _http.put(url, headers:  _headers, body: json.encode(carroAlteracao));
+      final listaCarrosAtualizada = _extractData(response);
+      streamControllerListaCarro.add(listaCarrosAtualizada);
+
+      return {'codigo':'0', 'mensagem':'Carro alterado com sucesso!'};
+    }catch(e){
+      return {'codigo':'-1', 'mensagem':'Erro ao tentar alterar o carro:'};
+    }      
+  }
 
   void CloneCarro(Carro carroAtual, Carro carroNovo){
     carroAtual.anoFabricacao = carroNovo.anoFabricacao;

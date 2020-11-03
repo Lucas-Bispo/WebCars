@@ -41,7 +41,15 @@ static final _initialCarros = [
         break;
 
       case 'PUT':
-        data = null;
+        var carroAlteracaoMap = json.decode(request.body);
+        var carroAlteracao = Carro.fromMap(carroAlteracaoMap);
+        var carroTarget = _carroDb.firstWhere((carro) => carro.codigoCarro == carroAlteracao.codigoCarro);
+
+        carroTarget.CloneCarro(carroAlteracao);
+        data = _carroDb;
+
+
+
         break;
       case 'DELETE':
         data = null;

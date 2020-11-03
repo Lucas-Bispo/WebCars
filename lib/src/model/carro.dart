@@ -18,6 +18,13 @@ class Carro{
     Map<String, dynamic> toJson() =>
     {'codigoCarro':codigoCarro, 'nomeCarro':nomeCarro, 'nomeFabricante':nomeFabricante, 'anoFabricacao':anoFabricacao, 'preco':preco, 'imagem':imagem};
 
+    void CloneCarro( Carro carroAlteracao){
+    anoFabricacao = carroAlteracao.anoFabricacao;
+    imagem = carroAlteracao.imagem;
+    nomeFabricante = carroAlteracao.nomeFabricante;
+    preco = carroAlteracao.preco;
+    nomeCarro = carroAlteracao.nomeCarro;
+  }
 
 }
     
