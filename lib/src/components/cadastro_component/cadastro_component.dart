@@ -27,13 +27,13 @@ class CadastroComponent extends OnInit{
     });    
   }  
 
-  Carro carroCadastro = Carro(null, null, null, null, null, null);
+  Carro carroCadastro = Carro(0, null, null, null, null, null);
 
   CadastroComponent(this._carroService);
 
-  void CadastrarCarro(){
+  void CadastrarCarro()async {
     var elementoAlerta;
-    var retornoCadastro = _carroService.CadastrarCarro(carroCadastro);
+    var retornoCadastro = await _carroService.CadastrarCarro2(carroCadastro);
     if (retornoCadastro['codigo'] == '0'){
       elementoAlerta = document.getElementById('alert-sucesso');
     } else{
