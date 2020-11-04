@@ -18,12 +18,16 @@ class LoginComponent{
 
   var usuario = '';
   var senha = '';
+  var switchConectado = true;
 
   LoginComponent(this._router);
 
   void Logar() async{
     var resposta = await _loginService.Logar(usuario, senha);
-    if(resposta['codigo'] == 1){
+    if(resposta['codigo'] == 0){
+      if(switchConectado == true){
+        window.localStorage['USR_WEBCARS'] = _loginService.LoginString();
+      }
       _router.navigate(RoutePaths.painel.toUrl());
     }else{
       var elementoAlerta = document.getElementById('alert-erro');

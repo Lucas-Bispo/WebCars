@@ -24,6 +24,15 @@ class LoginService {
   }
 
 
+  bool ManterConectado(){
+    return window.localStorage['USER_WEBCARS'] == null ? false : true;
+  }
+
+
+  String LoginString(){
+    return _loginUsuario.toJson();
+  }
+
 
   Future<Map<String, dynamic>> Logar(String usuario, String senha) async {
 

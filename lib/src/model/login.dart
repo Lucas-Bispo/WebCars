@@ -42,13 +42,13 @@ class Login {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id?.toMap(),
-      'login': login?.toMap(),
-      'nome': nome?.toMap(),
-      'email': email?.toMap(),
-      'urlFoto': urlFoto?.toMap(),
-      'token': token?.toMap(),
-      'roles': roles?.toMap(),
+      'id': id,
+      'login': login,
+      'nome': nome,
+      'email': email,
+      'urlFoto': urlFoto,
+      'token': token,
+      'roles': roles,
     };
   }
 
