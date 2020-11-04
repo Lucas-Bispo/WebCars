@@ -4,18 +4,30 @@
           <img id="img-form" src="https://i.pinimg.com/564x/2f/b5/68/2fb568d54a82da6d5a80d249f99e6ec3.jpg" class="img-fluid" alt="Responsive image">
       </div>
       <div class="p-0 col-6 d-flex justify-content-start">
-          <form class="p-4 bg-danger text-light">
+          <form (ngSubmit)="Logar()" class="p-4 bg-danger text-light" #formLogin="ngForm">
               <div id="brand-login">
                   <h2 class="text-center">WebCars</h2>
               </div>
               <br>
               <div class="form-group">
-                <label for="exampleDropdownFormEmail2">Email</label>
-                <input type="email" class="form-control" id="exampleDropdownFormEmail2">
+                <label for="usuario">Usuario</label>
+                <input type="text" class="form-control" id="usuarioid"
+                required
+                [(ngModel)]="usuario"
+                #usuarioid="ngForm"
+                [class.is-valid]="usuarioid.valid"
+                >
               </div>
               <div class="form-group">
-                <label for="exampleDropdownFormPassword2">Senha</label>
-                <input type="password" class="form-control" id="exampleDropdownFormPassword2">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" id="senhaid"
+                required
+                [(ngModel)]="senha"
+                #senhaid="ngForm"
+                [class.is-valid]="senhaid.valid"
+                
+                
+                >
               </div>
               <div class="form-group">
                 <div class="form-check">
@@ -25,8 +37,15 @@
                   </label>
                 </div>
               </div>
-              <button type="submit" class="btn btn-dark" (click)="Login()">Acessar</button>
+              <button type="submit" class="btn btn-dark" >Acessar</button>
+
+              <div id="alert-erro" class="alert alert-danger mt-3 col-12" role="alert">
+        
+              </div>
+
             </form>
+
+            
       </div>
   </div>
 

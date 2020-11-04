@@ -14,9 +14,12 @@ class LoginComponent{
 
   Router _router;
 
+  var usuario = '';
+  var senha = '';
+
   LoginComponent(this._router);
 
-  void Login(){
+  void Logar(){
     _router.navigate(RoutePaths.painel.toUrl());
   }
 
