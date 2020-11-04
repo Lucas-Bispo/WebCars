@@ -1,11 +1,5 @@
 # Sistema de cadastro de carros
 
-
-
-
-![logo-ifba-completo](https://user-images.githubusercontent.com/60610011/97865049-5771d380-1ce8-11eb-8293-ba9148977d06.png)
-
-
 Realizado com AngularDart e Bootstrap 4.
 
 Interação com usuário para operações simples como cadastrar, remover, buscar ! 
