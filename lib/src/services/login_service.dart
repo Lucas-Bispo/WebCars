@@ -21,7 +21,7 @@ class LoginService {
     try{
       var urlLogin = 'http://carros-springboot.herokuapp.com/api/v2/login';
 
-      var body ={'username:${usuario}, password${senha}'};
+      var body ={'username':usuario, 'password':senha};
 
       var response = await http2.post(urlLogin, headers: headers, body: json.encode(body));
 
