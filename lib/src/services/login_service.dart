@@ -6,7 +6,7 @@ import 'package:http/http.dart';
 
 class LoginService {
 
-  Login loginUsuario;
+  Login _loginUsuario = Login();
 
   Client http2;
 
@@ -15,6 +15,15 @@ class LoginService {
   }
 
   var headers = {'contente-type':'application/jason'};
+
+  bool EstaLogado(){
+    if(_loginUsuario.token == null){
+      return false;
+    }
+    return true;
+  }
+
+
 
   Future<Map<String, dynamic>> Logar(String usuario, String senha) async {
 
@@ -25,17 +34,18 @@ class LoginService {
 
       var response = await http2.post(urlLogin, headers: headers, body: json.encode(body));
 
-      loginUsuario = Login.fromJson(response.body);
+      
       
 
-      if(response.statusCode == '200'){
-        return {'codigo ': 200, 'mensagem' : 'Login realizado com sucesso'};
+      if(response.statusCode == 200){
+        _loginUsuario = Login.fromJson(response.body);
+        return {'codigo ': 0, 'mensagem' : 'Login realizado com sucesso'};
       }else {
-        return {'codigo ': 401, 'mensagem' : 'usuario ou senha invalidos'};
+        return {'codigo ': 1, 'mensagem' : 'usuario ou senha invalidos'};
       }
 
     } catch(e){
-      return {'codigo ': 401, 'mensagem' : 'Falha ao acessar sistema'};
+      return {'codigo ': 1, 'mensagem' : 'Falha ao acessar sistema'};
     }
 
     

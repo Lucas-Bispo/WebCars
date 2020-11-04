@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 
 import 'package:angular_forms/angular_forms.dart';
@@ -19,8 +21,26 @@ class LoginComponent{
 
   LoginComponent(this._router);
 
-  void Logar(){
-    _router.navigate(RoutePaths.painel.toUrl());
+  void Logar() async{
+    var resposta = await _loginService.Logar(usuario, senha);
+    if(resposta['codigo'] == 1){
+      _router.navigate(RoutePaths.painel.toUrl());
+    }else{
+      var elementoAlerta = document.getElementById('alert-erro');
+      MostraMensagemAlerta(elementoAlerta, retorCadastro['mensagem']);
+    }
+    
+    //_router.navigate(RoutePaths.painel.toUrl());
+
+
+    void MostraMensagemAlerta(Element element, String mensagem) async{
+    element.style.display = 'block';
+    element.text = mensagem;
+    await Future.delayed(Duration(seconds: 3));
+    element.style.display = 'none';
+    
+  }
+
   }
 
 }
