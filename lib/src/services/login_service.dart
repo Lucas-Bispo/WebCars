@@ -28,6 +28,9 @@ class LoginService {
     return window.localStorage['USER_WEBCARS'] == null ? false : true;
   }
 
+  void Desconectar(){
+    window.localStorage.remove('USR_WEBCARS');
+  }
 
   String LoginString(){
     return _loginUsuario.toJson();

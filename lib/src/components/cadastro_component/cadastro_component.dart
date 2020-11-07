@@ -31,7 +31,7 @@ class CadastroComponent extends OnInit{
 
   CadastroComponent(this._carroService);
 
-  void CadastrarCarro()async {
+  void CadastrarCarro()async{
     var elementoAlerta;
     var retornoCadastro = await _carroService.CadastrarCarro2(carroCadastro);
     if (retornoCadastro['codigo'] == '0'){
@@ -42,8 +42,9 @@ class CadastroComponent extends OnInit{
     MostraMensagemAlerta(elementoAlerta,retornoCadastro['mensagem']);
   }
 
-  void AlterarCarro() async{
+  void AlterarCarro()async{
     var elementoAlerta;
+    //var retornoAlteracao = _carroService.AlterarCarro(carroCadastro);
     //var retornoAlteracao = _carroService.AlterarCarro(carroCadastro);
     var retornoAlteracao = await _carroService.AlterarCarro2(carroCadastro);
     if (retornoAlteracao['codigo'] == '0'){
@@ -54,7 +55,6 @@ class CadastroComponent extends OnInit{
     MostraMensagemAlerta(elementoAlerta,retornoAlteracao['mensagem']);     
   }
 
-  
 
   void AlternaBotaoAlterar(String acao){
     ButtonElement botaoCadastrar = document.getElementById('btn-cadastrar');

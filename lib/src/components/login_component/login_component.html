@@ -10,45 +10,38 @@
               </div>
               <br>
               <div class="form-group">
-                <label for="usuario">Usuario</label>
-                <input type="text" class="form-control" id="usuarioid"
-                required
-                [(ngModel)]="usuario"
-                #usuarioid="ngForm"
-                [class.is-valid]="usuarioid.valid"
+                <label for="usuario">Usuário</label>
+                <input type="text" class="form-control" id="usuarioId"
+                  required
+                  [(ngModel)]="usuario"
+                  #usuarioId="ngForm"
+                  [class.is-valid]="usuarioId.valid"
                 >
               </div>
               <div class="form-group">
                 <label for="senha">Senha</label>
-                <input type="password" class="form-control" id="senhaid"
-                required
-                [(ngModel)]="senha"
-                #senhaid="ngForm"
-                [class.is-valid]="senhaid.valid"
-                
-                
+                <input type="password" class="form-control" id="senhaId"
+                  required
+                  [(ngModel)]="senha"
+                  #senhaId="ngForm"
+                  [class.is-valid]="senhaId.valid"                  
                 >
               </div>
               <div class="form-group">
                 <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="dropdownCheck2"
-                  
-                  
+                  <input type="checkbox" class="form-check-input" id="switchConectadoId"
+                    [(ngModel)]="switchConectado"
                   >
                   <label class="form-check-label" for="dropdownCheck2">
                     Mantenha-me Conectado
                   </label>
                 </div>
               </div>
-              <button type="submit" class="btn btn-dark" >Acessar</button>
-
+              <button type="submit" class="btn btn-dark">Acessar</button>
               <div id="alert-erro" class="alert alert-danger mt-3 col-12" role="alert">
-        
-              </div>
-
+                
+              </div>                
             </form>
-
-            
       </div>
   </div>
 

@@ -22,7 +22,7 @@ class PainelComponent extends OnInit{
 
   @override
   void ngOnInit(){
-    if(_loginService.EstaLogado() == false){
+    if(_loginService.EstaLogado() == false && _loginService.ManterConectado() == false){
       _router.navigate(RoutePaths.login.toUrl());
     }
   }
